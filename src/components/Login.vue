@@ -96,27 +96,24 @@ export default {
             url: 'admin/login',
             method: 'post',
             transformRequest: [function (data) {
-              // 对 data 进行任意转换处理
               return Qs.stringify(data)
             }],
             data: {
               acc: this.ruleForm.acc,
               pwd: this.ruleForm.pwd,
-              clientVerify: 'easq'
             }
           }).then(response => {
-            console.log(response)
+            if (response.data === "loginTrue") {
+              this.$message({message: '登陆成功', type: 'success'});
+              this.$router.push("/admin");
+            }else{
+              this.$message.error('账号密码错误');
+            }
           }).catch(err => {
             console.log(err)
           })
-
-          this.$message({
-            message: '登陆成功',
-            type: 'success'
-          });
-          // this.$router.push("/admin");
         } else {
-          this.$message.error('登陆失败');
+          this.$message.error('需要满足字段');
           return false;
         }
       });
