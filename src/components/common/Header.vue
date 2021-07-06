@@ -1,19 +1,21 @@
 <template>
   <el-container>
     <el-header>
-      <el-row :gutter="20">
-        <el-col :span="8">
+
+      <el-row type="flex" class="row-bg" justify="space-around">
+        <el-col :span="6">
           <div class="grid-content">
             <el-image :src="src" @click="toIndex"></el-image>
           </div>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="12">
           <div class="grid-content">
             <el-input v-model="search" placeholder="搜索车票/餐饮" style="width: 500px"></el-input>
             <el-button type="primary" icon="el-icon-search">搜索</el-button>
+
           </div>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="6">
           <div class="grid-content">
             <el-dropdown>
                 <span class="el-dropdown-link">
@@ -35,15 +37,12 @@
                 <el-dropdown-item>约号订单</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          </div>
-        </el-col>
-        <el-col :span="4">
-          <div class="grid-content">
             <router-link to="/login">登录</router-link>
             <router-link to="/regis">注册</router-link>
           </div>
         </el-col>
       </el-row>
+
     </el-header>
   </el-container>
 </template>
@@ -58,7 +57,7 @@ export default {
     }
   },
   methods: {
-    toIndex:function (){
+    toIndex: function () {
       this.$router.push("/index")
     }
   }
@@ -112,14 +111,17 @@ a {
   text-decoraction: none;
   color: #409EFF;
 }
+
 a:link {
   text-decoraction: none;
   color: #409EFF;
 }
-a:hover{
+
+a:hover {
   text-decoraction: none;
   color: rgba(64, 158, 255, 0.5);
 }
+
 .router-link-active {
   text-decoration: none;
 }

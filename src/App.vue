@@ -2,6 +2,7 @@
   <div id="app">
 
     <Header></Header>
+
     <router-view/>
 
   </div>
@@ -13,8 +14,11 @@ import Header from "./components/common/Header";
 export default {
   name: 'App',
   components: {
-    Header
+    // Header
+    Header: () => import('./components/common/Header'),
+
   }
+
 }
 </script>
 
