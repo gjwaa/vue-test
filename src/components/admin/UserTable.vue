@@ -1,21 +1,40 @@
 <template>
+  <div v-cloak>
+    <el-transfer v-model="value" :data="allData"  :titles="['Source', 'Target']">
+    </el-transfer>
+  </div>
 
-  <el-row type="flex" class="row-bg" justify="center">
-    <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-    <el-col :span="6"><div class="grid-content bg-purple-light">
-      <el-progress :text-inside="true" :stroke-width="26" :percentage="70"></el-progress>
-      <el-progress :text-inside="true" :stroke-width="24" :percentage="100" status="success"></el-progress>
-      <el-progress :text-inside="true" :stroke-width="22" :percentage="80" status="warning"></el-progress>
-      <el-progress :text-inside="true" :stroke-width="20" :percentage="50" status="exception"></el-progress>
-    </div></el-col>
-    <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-  </el-row>
+
 </template>
 
 <script>
 export default {
-  name: "UserTable"
-
+  name: "UserTable",
+  data() {
+    return {
+      allData: [],
+      value: []
+    };
+  },
+  beforeCreate() {
+    this.$axios({
+      url: '/admin/userTable',
+      method: 'post',
+    }).then(response => {
+      console.log(response.data)
+      const allData = response.data
+      const data = [];
+      for (let i = 0; i < allData.length; i++) {
+        data.push({
+          key: i,
+          label:allData[i],
+        });
+      }
+      this.allData = data;
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 }
 </script>
 

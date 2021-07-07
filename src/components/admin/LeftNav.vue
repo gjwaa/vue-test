@@ -1,8 +1,9 @@
 <template>
-<div>
-<!--  <el-col :span="6">-->
+  <div>
     <el-menu
-      default-active="1-1"
+      router
+      :default-active="$route.path"
+      default-active="/userInfo"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose">
@@ -13,10 +14,8 @@
         </template>
         <el-menu-item-group>
           <template slot="title">分组一</template>
-<!--          <el-menu-item index="1-1" @click="goTo('/admin/userInfo')">用户信息</el-menu-item>-->
-<!--          <el-menu-item index="1-2" @click="goTo('/admin/userTable')">用户列表</el-menu-item>-->
-          <el-menu-item index="1-1"><router-link to="/userInfo">用户信息</router-link></el-menu-item>
-
+          <el-menu-item index="/userInfo" >用户信息</el-menu-item>
+          <el-menu-item index="/userTable">用户列表</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="分组2">
           <el-menu-item index="1-3">选项3</el-menu-item>
@@ -39,17 +38,14 @@
         <span slot="title">导航四</span>
       </el-menu-item>
     </el-menu>
-<!--  </el-col>-->
-<!--  <el-col :span="18">-->
-<!--    <router-view></router-view>-->
-<!--  </el-col>-->
-</div>
+  </div>
+
 </template>
 
 <script>
 export default {
   name: "Left",
-  methods:{
+  methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
 

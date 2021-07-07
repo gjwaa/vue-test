@@ -30,6 +30,7 @@ export default new router({
     {
       path: '/admin', name: 'Admin', component: Admin,
       children: [
+        {path: '/',name: 'UserInfo', component: UserInfo},
         {path: '/userInfo',name: 'UserInfo', component: UserInfo},
         {path: '/userTable',name: 'UserTable', component: UserTable}
       ]
